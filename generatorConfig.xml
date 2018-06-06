@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+  <context id="context1">
+    <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/wsfinance" driverClass="com.mysql.jdbc.Driver" password="root" userId="root" />
+    <javaModelGenerator targetPackage="com.wsxd.main.entity" targetProject="wsxdreports\src\main\java" />
+    <sqlMapGenerator targetPackage="sqlMap" targetProject="wsxdreports\src\main\resources" />
+    <javaClientGenerator targetPackage="com.wsxd.main.dao" targetProject="wsxdreports\src\main\java" type="XMLMAPPER" />
+
+
+    <table schema="general" tableName="repay_info">
+      <property name="rootClass" value="com.wsxd.main.entity.BaseReqBean"/>
+    </table>
+    <table schema="general" tableName="repay_plan">
+      <property name="rootClass" value="com.wsxd.main.entity.BaseReqBean"/>
+    </table>
+
+  </context>
+</generatorConfiguration>
