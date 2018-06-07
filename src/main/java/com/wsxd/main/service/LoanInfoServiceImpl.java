@@ -13,12 +13,10 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wsxd.main.dao.LoanInfoMapper;
-import com.wsxd.main.entity.LoanContract;
-import com.wsxd.main.entity.LoanContractExample;
+
 import com.wsxd.main.entity.LoanInfo;
 import com.wsxd.main.entity.LoanInfoExample;
-import com.wsxd.main.entity.PersonBorrower;
-import com.wsxd.main.entity.RepayPlanExample;
+
 import com.wsxd.main.entity.ResultBean;
 import com.wsxd.main.utils.Md5ToolUtil;
 import com.wsxd.main.utils.PropertyUtil;
@@ -30,7 +28,7 @@ public class LoanInfoServiceImpl implements LoanInfoService{
 	@Autowired
 	LoanInfoMapper lfm;
 	
-	private String url="http://183.63.254.107:8882/supervise-receive/api/loan-info";
+	private String url=PropertyUtil.getProperty("url")+"loan-info";
 	
 	private String trustcode=PropertyUtil.getProperty("trustcode");	
 	

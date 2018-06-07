@@ -7,6 +7,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -18,12 +19,12 @@ import com.wsxd.main.entity.ResultBean;
 import com.wsxd.main.utils.Md5ToolUtil;
 import com.wsxd.main.utils.PropertyUtil;
 import com.wsxd.main.utils.RestTemplateUtils;
-
+@Service
 public class ExtendRepayPlanServiceImpl implements ExtendRepayPlanService{
 	@Autowired
 	RepayPlanMapper rpm;
 	
-	private String url="http://183.63.254.107:8882/supervise-receive/api/extend-repay-plan";
+	private String url=PropertyUtil.getProperty("url")+"extend-repay-plan";
 	
 	private String trustcode=PropertyUtil.getProperty("trustcode");	
 	
@@ -72,7 +73,7 @@ public class ExtendRepayPlanServiceImpl implements ExtendRepayPlanService{
 		
 		for(RepayPlan rp:list) {
 			//组装reqId
-			String reqId=trustcode+"ERP"+rp.getId();
+			String reqId=trustcode+"ER"+rp.getId();
 			rp.setReqId(reqId);
 			logger.info("ExtendRepayPlan_id:{}",reqId);
 			

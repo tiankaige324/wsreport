@@ -12,10 +12,7 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wsxd.main.dao.RepayInfoMapper;
-import com.wsxd.main.entity.LoanContract;
-import com.wsxd.main.entity.LoanContractExample;
-import com.wsxd.main.entity.LoanInfo;
-import com.wsxd.main.entity.LoanInfoExample;
+
 import com.wsxd.main.entity.RepayInfo;
 import com.wsxd.main.entity.RepayInfoExample;
 import com.wsxd.main.entity.ResultBean;
@@ -29,7 +26,7 @@ public class RepayServiceImpl implements RepayService{
 	@Autowired
 	RepayInfoMapper rim;
 	
-	private String url="http://183.63.254.107:8882/supervise-receive/api/";
+	private String url=PropertyUtil.getProperty("url");
 	
 	private String trustcode=PropertyUtil.getProperty("trustcode");	
 	

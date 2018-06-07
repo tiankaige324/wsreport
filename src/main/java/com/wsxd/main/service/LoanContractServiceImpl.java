@@ -37,7 +37,7 @@ public class LoanContractServiceImpl implements LoanContractService {
 
 	@Autowired
 	RepayPlanMapper rpm;
-	private String url="http://183.63.254.107:8882/supervise-receive/api/loan-contract";
+	private String url=PropertyUtil.getProperty("url")+"loan-contract";
 	
 	private String trustcode=PropertyUtil.getProperty("trustcode");
 	
@@ -160,7 +160,7 @@ public class LoanContractServiceImpl implements LoanContractService {
 		List<LoanContract> lcl=lcm.selectByExample(lce);
 		
 		for(LoanContract lc:lcl) {
-			String reqId=trustcode+lc.getContractNumber();
+			String reqId=trustcode+"LC"+lc.getContractNumber();
 			lc.setReqId(reqId);
 			logger.info("reqId:{}",reqId);
 			
