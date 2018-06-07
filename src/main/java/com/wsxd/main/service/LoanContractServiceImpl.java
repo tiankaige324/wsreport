@@ -92,6 +92,9 @@ public class LoanContractServiceImpl implements LoanContractService {
 			String sign=Md5ToolUtil.getMd5Code(str);
 			brb.setSign(sign);		
 			ResultBean rb=RestTemplateUtils.delete(url, brb);
+			if(rb.getResultCode().equals("0")){
+				lcm.deleteContract(cn);
+			}
 			resultmap.put(cn, rb);
 		}
 		return resultmap;

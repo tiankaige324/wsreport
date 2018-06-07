@@ -93,4 +93,10 @@ public interface LoanContractMapper {
      * @mbg.generated Wed Jun 06 20:44:37 CST 2018
      */
     int updateByPrimaryKey(LoanContract record);
+    
+    /**
+     * 逻辑删除合同
+     * @param record
+     */
+    void deleteContract(String contractNumber);
 }

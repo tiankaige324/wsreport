@@ -822,4 +822,11 @@
       position = #{position,jdbcType=VARCHAR}
     where contract_number = #{contractNumber,jdbcType=VARCHAR}
   </update>
+  		
+  <!-- 逻辑删除合同 -->
+  <update id="deleteContract" parameterType="java.lang.String">
+  	update loan_contract
+    set del_flag = 1
+    where contract_number = #{contractNumber,jdbcType=VARCHAR}
+  </update>
 </mapper>
