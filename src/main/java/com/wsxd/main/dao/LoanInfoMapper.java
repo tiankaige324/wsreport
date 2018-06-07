@@ -93,4 +93,10 @@ public interface LoanInfoMapper {
      * @mbg.generated Wed Jun 06 20:44:37 CST 2018
      */
     int updateByPrimaryKey(LoanInfo record);
+    
+    /**
+     * 逻辑删除放款
+     * @param record
+     */
+    void deleteInfo(String id);
 }

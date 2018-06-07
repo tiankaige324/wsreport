@@ -13,7 +13,7 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wsxd.main.dao.LoanInfoMapper;
-
+import com.wsxd.main.entity.BaseReqBean;
 import com.wsxd.main.entity.LoanInfo;
 import com.wsxd.main.entity.LoanInfoExample;
 
@@ -69,9 +69,23 @@ public class LoanInfoServiceImpl implements LoanInfoService{
 	
 	@Override
 	public Map<String, ResultBean> deleteLoanInfo(String id) {
-		int lid=Integer.valueOf(id);
+		Map<String,ResultBean> resultmap=new HashMap<String, ResultBean>();
+		BaseReqBean brb=new BaseReqBean();
 		
-		return null;
+		String reqId=trustcode+"LI"+id;
+		brb.setReqId(reqId);
+		String str="clientId="+brb.getClientId()+"&reqId="+brb.getReqId()+"&roundStr="+brb.getRoundStr()+"&token="+brb.getToken()+"&appKey="+brb.getAppKey();
+		String sign=Md5ToolUtil.getMd5Code(str);
+		brb.setSign(sign);		
+		ResultBean rb=RestTemplateUtils.delete(url, brb);
+		if(rb.getResultCode().equals("0")){
+			lfm.deleteInfo(id);
+			logger.info("放款ID:{}删除成功!",id);
+		}else{
+			logger.info("放款ID:{}删除失败! {}",id,rb.getResultMsg());
+		}
+		resultmap.put(id, rb);
+		return resultmap;
 	}
 	
 	@Override

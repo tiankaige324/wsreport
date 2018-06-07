@@ -84,6 +84,12 @@ public class ContractLossServiceImpl implements ContractLossService{
 			String sign=Md5ToolUtil.getMd5Code(str);
 			brb.setSign(sign);		
 			ResultBean rb=RestTemplateUtils.delete(url, brb);
+			if(rb.getResultCode().equals("0")){
+				clm.deleteContractLoss(cn);
+				logger.info("坏账合同编号:{}删除成功!",cn);
+			}else{
+				logger.info("坏账合同编号:{}删除失败! {}",cn,rb.getResultMsg());
+			}
 			resultmap.put(cn, rb);
 		}
 		return resultmap;

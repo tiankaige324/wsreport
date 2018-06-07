@@ -84,6 +84,12 @@ public class AssetLossServiceImpl implements AssetLossService{
 			String sign=Md5ToolUtil.getMd5Code(str);
 			brb.setSign(sign);		
 			ResultBean rb=RestTemplateUtils.delete(url, brb);
+			if(rb.getResultCode().equals("0")){
+				alm.deleteAssetLoss(dt);
+				logger.info("计提月份:{}删除成功!",dt);
+			}else{
+				logger.info("计提月份:{}删除失败! {}",dt,rb.getResultMsg());
+			}
 			resultmap.put(dt, rb);
 		}
 		return resultmap;

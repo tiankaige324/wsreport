@@ -61,4 +61,10 @@ public interface ContractLossMapper {
      * @mbg.generated Wed Jun 06 20:44:37 CST 2018
      */
     int updateByExample(@Param("record") ContractLoss record, @Param("example") ContractLossExample example);
+    
+    /**
+     * 逻辑删除坏账
+     * @param record
+     */
+    void deleteContractLoss(String ContractNumber);
 }

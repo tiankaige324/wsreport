@@ -315,4 +315,12 @@
       flag = #{flag,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  
+  <update id="deleteInfo" parameterType="java.lang.String">
+    update loan_info
+    set 
+      del_flag = 1
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+ 
 </mapper>

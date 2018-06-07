@@ -61,4 +61,11 @@ public interface AssetLossMapper {
      * @mbg.generated Wed Jun 06 20:44:37 CST 2018
      */
     int updateByExample(@Param("record") AssetLoss record, @Param("example") AssetLossExample example);
+    
+    
+    /**
+     * 逻辑删除计提信息
+     * @param record
+     */
+    void deleteAssetLoss(String dateMonth);
 }

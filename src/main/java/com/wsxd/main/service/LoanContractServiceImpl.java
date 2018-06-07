@@ -94,6 +94,9 @@ public class LoanContractServiceImpl implements LoanContractService {
 			ResultBean rb=RestTemplateUtils.delete(url, brb);
 			if(rb.getResultCode().equals("0")){
 				lcm.deleteContract(cn);
+				logger.info("合同编号:{}删除成功!",cn);
+			}else{
+				logger.info("合同编号:{}删除失败! {}",cn,rb.getResultMsg());
 			}
 			resultmap.put(cn, rb);
 		}
