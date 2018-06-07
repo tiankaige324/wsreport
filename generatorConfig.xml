@@ -7,10 +7,6 @@
     <sqlMapGenerator targetPackage="sqlMap" targetProject="wsxdreports\src\main\resources" />
     <javaClientGenerator targetPackage="com.wsxd.main.dao" targetProject="wsxdreports\src\main\java" type="XMLMAPPER" />
 
-
-    <table schema="general" tableName="repay_info">
-      <property name="rootClass" value="com.wsxd.main.entity.BaseReqBean"/>
-    </table>
     <table schema="general" tableName="repay_plan">
       <property name="rootClass" value="com.wsxd.main.entity.BaseReqBean"/>
     </table>

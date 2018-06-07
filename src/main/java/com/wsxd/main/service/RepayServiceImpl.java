@@ -70,7 +70,6 @@ public class RepayServiceImpl implements RepayService{
 				}
 				logger.info("RepayInfo: {}",ri);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
