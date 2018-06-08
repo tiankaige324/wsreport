@@ -11,7 +11,6 @@ import com.wsxd.main.service.ContractLossService;
 import com.wsxd.main.service.DayReportService;
 import com.wsxd.main.service.ExtendRepayPlanService;
 import com.wsxd.main.service.LoanContractService;
-import com.wsxd.main.service.LoanContractServiceImpl;
 import com.wsxd.main.service.LoanInfoService;
 import com.wsxd.main.service.RepayService;
 
@@ -60,6 +59,13 @@ public class Tasks {
 	@Scheduled(cron="0 0/1 * * * ?")
 	public void moon() {
 		logger.info("计提上报定时任务启动");
+		als.reportAssetLoss(als.getUnflagAssetLossData());		
+	}
+	
+		
+	@Scheduled(cron="0 0/1 * * * ?")
+	public void database() {
+		logger.info("数据库更新定时任务启动");
 		als.reportAssetLoss(als.getUnflagAssetLossData());		
 	}
 }
